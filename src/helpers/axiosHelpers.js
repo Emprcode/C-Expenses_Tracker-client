@@ -1,5 +1,8 @@
 import axios from "axios";
-const baseURL = process.env.NODE_ENV !== "production" ? "http://localhost:8000/api/v1" : "/api/v1"
+const baseURL =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:8000/api/v1"
+    : "/api/v1";
 const userAPI = baseURL + "/user";
 const transAPI = baseURL + "/transaction";
 
@@ -49,7 +52,7 @@ export const postTransactions = async (userObj) => {
         message: "You need to log in",
       };
     }
-    const { data } = await axios.post(transAPI, userObj , {
+    const { data } = await axios.post(transAPI, userObj, {
       headers: {
         Authorization: userId,
       },
@@ -79,8 +82,6 @@ export const fetchTransactions = async () => {
       },
     });
 
- 
-
     return data;
   } catch (error) {
     return {
@@ -90,7 +91,7 @@ export const fetchTransactions = async () => {
   }
 };
 
-export const deleteTransactions = async () => {
+export const deleteTransactions = async (ids) => {
   try {
     const userId = getUserId();
 
@@ -100,14 +101,14 @@ export const deleteTransactions = async () => {
         message: "You need to log in",
       };
     }
+
     const { data } = await axios.delete(transAPI, {
+      data: ids,
       headers: {
         Authorization: userId,
       },
     });
-
- 
-
+    console.log(data);
     return data;
   } catch (error) {
     return {

@@ -98,7 +98,7 @@ const Registration = () => {
           <Col className="p-5 ">
             <div className="form">
               <h2 className="text-primary">
-                <i class="fa-solid fa-file-pen"></i> Login
+                <i class="fa-solid fa-file-pen"></i> Register
               </h2>
               <hr />
               <Form onSubmit={handleOnSubmit}>
@@ -107,7 +107,7 @@ const Registration = () => {
                 ))}
                 <div className="d-grid">
                   <Button variant="primary" type="submit">
-                    Login
+                    Register
                   </Button>
                 </div>
               </Form>

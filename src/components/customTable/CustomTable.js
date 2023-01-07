@@ -1,5 +1,5 @@
 import Table from "react-bootstrap/Table";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useState } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import { toast } from "react-toastify";
@@ -38,13 +38,18 @@ export const CustomTable = ({ trans = [] }) => {
     }
   };
 
-  // const handleOnDelete = async () => {
-  //   if (window.confirm)(
-  //     `Are you sure you want to delete ${itemToDelete.length} transaction`;)
-
-  //   const { status, message } = await deleteTransactions(itemToDelete);
-  //   toast[status](message);
-  // };
+  const handleOnDelete = async () => {
+    if (
+      !window.confirm(
+        `Are you sure you want to delete ${itemToDelete.length} transaction`
+      )
+    )
+      return;
+    const { status, message } = await deleteTransactions(itemToDelete);
+    // console.log(message);
+    toast[status](message);
+    setItemToDelete([]);
+  };
   return (
     <Table striped bordered hover className="mt-5">
       <thead>
@@ -98,7 +103,10 @@ export const CustomTable = ({ trans = [] }) => {
         </tr>
         {itemToDelete.length > 0 && (
           <div>
-            <Button variant="danger">Delete</Button>
+            <Button variant="danger" onClick={handleOnDelete}>
+              {" "}
+              Delete selected {itemToDelete.length} Task(s)
+            </Button>
           </div>
         )}
       </tbody>
