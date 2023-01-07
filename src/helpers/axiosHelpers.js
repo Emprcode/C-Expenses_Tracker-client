@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = process.env.NODE_EN !== "production" ? "http://localhost:8000/api/v1" : "/api/v1"
+const baseURL = process.env.NODE_ENV !== "production" ? "http://localhost:8000/api/v1" : "/api/v1"
 const userAPI = baseURL + "/user";
 const transAPI = baseURL + "/transaction";
 
